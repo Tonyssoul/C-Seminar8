@@ -35,25 +35,45 @@ void PrintMatrix(int[,] matrix)
 
 }
 
+// void Chastota(int[,] matrix)
+// {
+//     for (int l = 0; l < 10; l++)
+//     {
+//         int count = 0;
+//         for (int i = 0; i < matrix.GetLength(0); i++)
+//         {
+//             for (int j = 0; j < matrix.GetLength(1); j++)
+//             {
+//                 // count = (l == matrix[i, j]) ? count++ : count + 0;
+//                 if (l == matrix[i, j]) count++;
+//             }
+//         }
+//         if (count > 0)
+//         {
+//         System.Console.WriteLine($"{l} встречается {count} раз");
+//         }
+//     }
+
+// }
+
 void Chastota(int[,] matrix)
 {
-    for (int l = 0; l < 10; l++)
+    var count = new int[10];
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        int count = 0;
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                // count = (l == matrix[i, j]) ? count++ : count + 0;
-                if (l == matrix[i, j]) count++;
-            }
-        }
-        if (count > 0)
-        {
-        System.Console.WriteLine($"{l} встречается {count} раз");
+            count[matrix[i, j]]++;
         }
     }
-    
+
+    for (int i = 0; i < count.Length; i++)
+    {
+        if(count[i]!=0)
+        {
+            System.Console.WriteLine($"{i} значение встречается {count[i]} раз");
+        }
+    }
 }
 
 int rows = ReadInt("Введите колличество строк матрицы ");
